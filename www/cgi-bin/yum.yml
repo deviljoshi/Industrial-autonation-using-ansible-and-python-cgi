@@ -1,0 +1,25 @@
+- hosts: "{{ ip }}"
+  vars_files:
+     - /var/www/cgi-bin/ansible_codes/keywords.py
+  tasks:
+    - name: add repository 
+      yum_repository:
+        name: xyz
+        description: yum repo
+        baseurl: file:///run/media/root/RHEL-7.5\ Server.x86_64/
+        gpgcheck: no 
+     
+    - name: add repository
+      yum_repository:
+         name: pqr 
+         description: yum repo
+         baseurl: file:///root/Desktop/rhel7_extra_new_rpm/
+         gpgcheck: no
+    
+    - name: add repository
+      yum_repository:
+         name: mno
+         description: yum repo
+         baseurl: file:///rhel7_5_rpm_extras
+         gpgcheck: no
+

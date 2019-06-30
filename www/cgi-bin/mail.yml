@@ -1,0 +1,17 @@
+- hosts: all 
+  vars_files:
+      - /var/www/cgi-bin/ansible_codes/keywords.py
+  tasks: 
+      - name: sending an e-mail through Gmail SMTP servers
+        mail:  
+          host: smtp.gmail.com
+          port: 587
+          username: "{{ from }}"
+          password: "{{ password }}"
+          to: "{{ to }}"
+         # to: "{{ email }}"
+          subject: "{{ sub }}"
+          body: "{{ msg }}"
+    
+      
+

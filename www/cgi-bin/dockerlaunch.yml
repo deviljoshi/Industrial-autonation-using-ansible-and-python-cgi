@@ -1,0 +1,32 @@
+- hosts: all
+  vars_files:
+    - /root/Desktop/menu/files/keywords.yml
+  tasks:
+    - name: Configuring Yum 
+      command: "ansible-playbook /root/Desktop/menu/yum.yml"
+    - name: Installing docker-ce
+      package:
+        name: "docker-ce"
+        state: present
+    
+  #  - command: "pip2 install docker-py"    
+    - name: Installing docker-py
+      pip:
+        name: "docker-py"
+        state: present 
+    - name: Starting docker service
+      service:   
+        name: "docker"
+        state: started
+   
+    - name: container launch 
+      docker_container: 
+        name: "{{ dock_name }}"
+        image: "centos"
+        state: present
+        interactive: true
+        tty: true   
+      environment:
+        PYTHONPATH: "/usr/lib/python2.7/site-packages"
+                 
+  #  - command: "docker start -ai  dev13"

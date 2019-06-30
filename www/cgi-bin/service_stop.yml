@@ -1,0 +1,9 @@
+- hosts: "{{ ip }}"
+  vars_files:
+     - /var/www/cgi-bin/ansible_codes/keywords.py
+  tasks:
+    - service:
+        name: "{{ name }}"
+        state: stopped
+
+                                                                      

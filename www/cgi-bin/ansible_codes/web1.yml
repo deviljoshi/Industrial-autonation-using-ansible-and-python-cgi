@@ -1,0 +1,14 @@
+- hosts: all 
+  tasks:
+    - package: 
+        name: "httpd" 
+        state: present
+
+    - get_url: 
+        dest: "/var/www/html/index.html"
+        url: "ftp://192.168.43.162/pub/sample.conf"
+
+    - service:
+        name: httpd
+        state: started
+   

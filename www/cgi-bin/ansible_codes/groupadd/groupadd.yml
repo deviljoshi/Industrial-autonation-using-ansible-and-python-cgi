@@ -1,0 +1,8 @@
+- hosts: all
+  vars_files: 
+     - "/var/www/cgi-bin/ansible_codes/keywords.py"
+  tasks:
+  - name: creating group
+    group:
+        name: "{{ group_name }}"
+        state: present

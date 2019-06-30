@@ -1,0 +1,15 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - /var/www/cgi-bin/ansible_codes/keywords.py
+  tasks:
+   - ec2:
+      aws_access_key: "AKIAJ4YOJPREEHXROCDA"
+      aws_secret_key: "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" 
+      key_name: "/root/Desktop/rhel7.pem"
+      instance_type: "t2.micro"
+      image: "-ami-5b673c34"
+      region: "ap-south-1"
+     # wait: yes 
+     # vpc_subnet_id: "vpc-e70b3c8f"
+     # assign_public_ip: yes

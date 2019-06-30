@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+     - name: collecting RAM data
+       copy: 
+          content: " {{ ansible_hostname }} has {{ ansible_memfree_mb }}MB free RAM"
+          dest: "/root/Desktop/menu/files/ram.yml"
+#          content: " {{ ansible_hostname }} has total RAM {{ ansible_memory_mb }}"
+#          dest:  "/root/Desktop/show_ram.yml"

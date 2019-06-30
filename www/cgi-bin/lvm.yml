@@ -1,0 +1,36 @@
+- hosts: "{{ ip }}"  
+  vars_files:
+      - /var/www/cgi-bin/ansible_codes/keywords.py  
+  user: root
+  tasks:
+       - name: partition
+         parted:
+           device: "{{ device }}"
+           number: "1"
+           flags: [ lvm ]
+           state: present
+           part_start: 1GiB
+ 
+       - name: vgcreate
+         lvg:
+            vg: "{{ vg_name }}"
+            pvs: /dev/sdb1
+
+       - name: lvcreate
+         lvol:
+            vg: "{{ vg_name }}"
+            lv: "{{ lv_name }}"
+            size: "{{ size_lv }}"
+
+       - name: create file system
+         filesystem: 
+            fstype: ext4
+            dev: "/dev/{{ vg_name }}/{{ lv_name }}"
+
+       - name: mount logical volume
+         mount: 
+            name: "{{mount}}"
+            src: "/dev/{{ vg_name }}/{{ lv_name }}"
+            fstype: ext4
+            state: mounted
+
