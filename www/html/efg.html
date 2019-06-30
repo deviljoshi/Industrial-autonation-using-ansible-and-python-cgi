@@ -1,0 +1,169 @@
+<!-- CSS Styles -->
+<style>
+  .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speech input {border: 0; width: 240px; display: inline-block; height: 30px;}
+  .speech img {float: right; width: 40px }
+</style>
+
+<!-- Search Form -->
+<form id="labnol" method="get" action="file:///C:/Users/devki/Desktop/xyz.html">
+  <div class="speech">
+    <input type="text" name="q" id="transcript" placeholder="Speak" />
+    <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
+  </div>
+</form>
+
+<!-- HTML5 Speech Recognition API -->
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+</script>
+
+
+
+
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome | Life Style Store</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+
+    <body style="padding-top: 50px;">
+        <!-- Header -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="efg.html">Lifestyle Store</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                       <li><a href="aboutus.html"><span class="glyphicon glyphicon-user"></span> About Us</a></li>
+                    <!--    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  -->  </ul>
+                </div>
+            </div>
+        </div>
+        <!--Header end-->
+
+        <div id="content">
+            <!--Main banner image-->
+            <div id = "banner_image">
+                <div class="container">
+                    <center>
+                        <div id="banner_content">
+                            <h1>We sell lifestyle.</h1>
+                            <p>Flat 40% OFF on premium brands </p>
+                            <br/>
+                            <a  href="h.html" class="btn btn-danger btn-lg active">Shop Now</a>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <!--Main banner image end-->
+
+            <!--Item categories listing-->
+            <div class="container">
+                <div class="row text-center" id="item_list">
+                    <div class="col-sm-3">
+                        <a href="h.html#cameras" >
+                            <div class="thumbnail">
+                                <img src="img/a.png" alt="">
+                                <div class="caption">
+                                    <h3>Cameras</h3>
+                                    <p>Choose among the best available in the world.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a href="h.html#watches" >
+                            <div class="thumbnail">
+                                <img src="img/f.jpg" alt="">
+                                <div class="caption">
+                                    <h3>Watches</h3>
+                                    <p>Original watches from the best brands.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <a href="h.html#watches" >
+                            <div class="thumbnail">
+                                <img src="img/g.jpg" alt="">
+                                <div class="caption">
+                                    <h3>Watches</h3>
+                                    <p>Original watches from the best brands.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <a href="h.html#shirts" >
+                            <div class="thumbnail">
+                                <img src="img/j.png" alt="">
+                                <div class="caption">
+                                    <h3>Shirts</h3>
+                                    <p>Our exquisite collection of shirts.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--Item categories listing end-->
+        </div>
+
+
+        <!--Footer-->
+        <footer>
+            <div class="container">
+                <center>
+                    <p>Copyright &copy; Lifestyle Store. All Rights Reserved  |  Contact Us: +91 90000 00000</p>
+                </center>
+            </div>
+        </footer>
+        <!--Footer end-->
+
+    </body>
+</html>
