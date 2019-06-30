@@ -11,5 +11,5 @@
       image: "-ami-5b673c34"
       region: "ap-south-1"
      # wait: yes 
-     # vpc_subnet_id: "vpc-e70b3c8f"
+     # vpc_subnet_id: ""
      # assign_public_ip: yes
